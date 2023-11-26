@@ -15,9 +15,7 @@
         </li>
     {%- else %}
         <li>
-            <a href="{{ nav_item.url }}">
-                {% include "nav_item.html.j2" %}
-            </a>
+            {% include "nav_item.html.j2" %}
         </li>
     {%- endif %}
     {%- endfor %}

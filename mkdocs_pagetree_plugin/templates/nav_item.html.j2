@@ -1,4 +1,6 @@
-{{ nav_item.title }} 
-{% if nav_item.meta.status %}
-    <strong>{{ nav_item.meta.status }}</strong>
-{% endif %}
+<a class="md-nav__link" href="{{ nav_item.url }}">
+    {{ nav_item.title }}
+    {% if nav_item.meta.status %}
+        <strong>{{ nav_item.meta.status }}</strong>
+    {% endif %}
+</a>
