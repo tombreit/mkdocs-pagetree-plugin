@@ -1,0 +1,18 @@
+{%- if not nav_item.children %}
+<li>
+    <a href="{{ nav_item.url }}">
+        {% include "nav_item.html.j2" %}
+    </a>
+</li>
+{%- else %}
+  <li>
+    <details>
+    <summary>{{ nav_item.title }}</summary>
+    <ul>
+        {%- for nav_item in nav_item.children %}
+            {% include "nav_sub.html.j2" %}
+        {%- endfor %}
+    </ul>
+    </details>
+  </li>
+{%- endif %}

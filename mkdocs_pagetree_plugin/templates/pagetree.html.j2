@@ -1,0 +1,31 @@
+<style>
+.pagetree details {
+    margin: 0;
+    padding: 0; 
+}
+</style>
+
+{%- if pagetree|length>1 %}
+    <ul class="pagetree">
+    {%- for nav_item in pagetree %}
+    {%- if nav_item.children %}
+        <li>
+        <details open>
+            <summary>{{ nav_item.title }}</summary>
+            <ul>
+            {%- for nav_item in nav_item.children %}
+                {% include "nav_sub.html.j2" %}
+            {%- endfor %}
+            </ul>
+        </details>
+        </li>
+    {%- else %}
+        <li>
+            <a href="{{ nav_item.url }}">
+                {% include "nav_item.html.j2" %}
+            </a>
+        </li>
+    {%- endif %}
+    {%- endfor %}
+    </ul>
+{%- endif %}
