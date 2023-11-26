@@ -6,6 +6,7 @@ import shutil
 from pathlib import Path
 from jinja2 import PackageLoader
 from mkdocs.plugins import BasePlugin, get_plugin_logger
+from mkdocs.utils import copy_file
 
 
 log = get_plugin_logger(__name__)
@@ -44,6 +45,7 @@ class PagetreePlugin(BasePlugin):
         # named identically from other plugins/themes.
         module_name = "mkdocs_pagetree_plugin"
         file = f"js/{module_name}.js"
-        src_file_path = Path(Path.cwd() / module_name / file)
+        current_dir = Path(__file__).parent
+        src_file_path = current_dir / file
         dest_file_path = Path(config["site_dir"], file)
-        shutil.copy(src_file_path, dest_file_path)
+        copy_file(src_file_path, dest_file_path)
