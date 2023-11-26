@@ -1,11 +1,5 @@
-<style>
-.pagetree details {
-    margin: 0;
-    padding: 0; 
-}
-</style>
-
 {%- if pagetree|length>1 %}
+<div class="pagetree-container">
     <ul class="pagetree">
     {%- for nav_item in pagetree %}
     {%- if nav_item.children %}
@@ -28,4 +22,5 @@
     {%- endif %}
     {%- endfor %}
     </ul>
+</div>
 {%- endif %}

@@ -1,0 +1,1 @@
+include mkdocs_pagetree_plugin/js/*.js
