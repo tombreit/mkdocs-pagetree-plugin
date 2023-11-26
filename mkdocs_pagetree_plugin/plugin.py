@@ -2,11 +2,11 @@
 MkDocs Pagetree Plugin
 """
 
-import shutil
 from pathlib import Path
 from jinja2 import PackageLoader
 from mkdocs.plugins import BasePlugin, get_plugin_logger
 from mkdocs.utils import copy_file
+from mkdocs.commands.build import get_context
 
 
 log = get_plugin_logger(__name__)
@@ -14,17 +14,18 @@ log = get_plugin_logger(__name__)
 
 class PagetreePlugin(BasePlugin):
 
-    def render_pagetree(self, pagetree, config):
+    def render_pagetree(self, pagetree, config, page):
         env = config.theme.get_env()
         env.loader = PackageLoader("mkdocs_pagetree_plugin")
         template = env.get_template("pagetree.html.j2")
-        return template.render(pagetree=pagetree)
+        context = get_context(None, None, config, page=page, base_url="/")
+        context["pagetree"] = pagetree
+        return template.render(context)
 
     def on_config(self, config, **kwargs):
         config["extra_javascript"] = ["js/mkdocs_pagetree_plugin.js"] + config[
             "extra_javascript"
         ]
-
         return config
 
     def on_nav(self, nav, config, files):
@@ -34,7 +35,7 @@ class PagetreePlugin(BasePlugin):
         marker = "{{ pagetree }}"
         if marker in output:
             log.debug(f"Found pagetree marker in {page.file.src_uri}")
-            pagetree_rendered = self.render_pagetree(self.pagetree, config)
+            pagetree_rendered = self.render_pagetree(self.pagetree, config, page)
             return output.replace(marker, pagetree_rendered)
 
     def on_post_build(self, config):

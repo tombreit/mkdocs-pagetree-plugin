@@ -1,4 +1,4 @@
-<a class="md-nav__link" href="{{ nav_item.url }}">
+<a class="md-nav__link" href="{{ nav_item.url|url }}">
     {{ nav_item.title }}
     {% if nav_item.meta.status %}
         <strong>{{ nav_item.meta.status }}</strong>
