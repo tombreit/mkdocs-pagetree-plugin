@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     // Plugin JS
     // Collapse/expand all pagetree <details> sections
     const pagetreeElements = document.querySelectorAll('.pagetree-container');
-    const toggleBtn = `<button class="pagetree-toggle btn btn-primary btn-sm my-2" type="button">Expand/Collapse</button>`;
+    const toggleBtn = `<button class="pagetree-toggle md-button btn btn-primary btn-sm my-2" type="button">Expand/Collapse</button>`;
 
     for (const pagetreeElement of pagetreeElements) {
         pagetreeElement.insertAdjacentHTML("afterbegin", toggleBtn);
