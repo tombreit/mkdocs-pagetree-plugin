@@ -38,7 +38,7 @@ dev = [
 ]
 
 [project.entry-points."mkdocs.plugins"]
-"pagetree" = "mkdocs_pagetree_plugin.plugin:PagetreePlugin"
+pagetree = "mkdocs_pagetree_plugin.plugin:PagetreePlugin"
 
 [project.urls]
 Homepage = "https://tombreit.github.io/mkdocs-pagetree-plugin/"
