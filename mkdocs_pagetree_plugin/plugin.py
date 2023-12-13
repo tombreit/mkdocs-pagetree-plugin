@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2023 Thomas Breitner
+#
+# SPDX-License-Identifier: MIT
+
 """
 MkDocs Pagetree Plugin
 """
@@ -13,7 +17,6 @@ log = get_plugin_logger(__name__)
 
 
 class PagetreePlugin(BasePlugin):
-
     def render_pagetree(self, pagetree, config, page):
         env = config.theme.get_env()
         env.loader = PackageLoader("mkdocs_pagetree_plugin")

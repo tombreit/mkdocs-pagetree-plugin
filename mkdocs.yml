@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2023 Thomas Breitner
+#
+# SPDX-License-Identifier: CC0-1.0
+
 site_name: mkdocs-pagetree-plugin
 site_url: https://tombreit.github.io/mkdocs-pagetree-plugin
 repo_url: https://github.com/tombreit/mkdocs-pagetree-plugin

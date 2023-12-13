@@ -1,1 +1,5 @@
+# SPDX-FileCopyrightText: 2023 Thomas Breitner
+#
+# SPDX-License-Identifier: CC0-1.0
+
 include mkdocs_pagetree_plugin/js/*.js

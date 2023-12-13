@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2023 Thomas Breitner
+
+SPDX-License-Identifier: CC0-1.0
+-->
+
 # Home
 
 MkDocs plugin that allows you to display the page tree. Like `sitemap.xml`, but for humans.

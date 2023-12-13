@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2023 Thomas Breitner
+#
+# SPDX-License-Identifier: MIT
+
 [build-system]
 requires = [
     "setuptools>=61.0.0",
@@ -11,9 +15,9 @@ name = "mkdocs-pagetree-plugin"
 dynamic = ["version"]
 description = "MkDocs plugin that allows you to display the page tree"
 authors = [{name = "Thomas Breitner", email = "mail@thms.de"},]
-license = {file = "LICENSE"}
+license = {text = "MIT"}
 readme = "README.md"
-requires-python = ">=3.7"
+requires-python = ">=3.9"
 classifiers = [
     "Framework :: MkDocs",
     "Topic :: Documentation",
@@ -21,8 +25,16 @@ classifiers = [
     "Programming Language :: Python :: 3",
     "Development Status :: 3 - Alpha",
 ]
+
 dependencies = [
     "mkdocs>=1.5",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pre-commit",
+    "reuse",
+    "ruff",
 ]
 
 [project.entry-points."mkdocs.plugins"]
@@ -35,3 +47,10 @@ Repository = "https://github.com/tombreit/mkdocs-pagetree-plugin"
 Issues = "https://github.com/tombreit/mkdocs-pagetree-plugin/issues"
 
 [tool.setuptools_scm]
+
+[tool.setuptools.packages.find]
+where = ["mkdocs_pagetree_plugin"]
+
+[tool.ruff]
+src = ["mkdocs_pagetree_plugin"]
+target-version = "py311"
