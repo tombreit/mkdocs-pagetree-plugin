@@ -28,17 +28,18 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip setuptools wheel
-        python -m pip install --upgrade build twine
     - name: Trigger a test build
       run: |
         python -m pip install .
-        mkdocs build --verbose
+        mkdocs build --clean --verbose
     - name: Deploy to github pages
       run: |
         python -m pip install .
-        mkdocs gh-deploy --force --verbose
+        mkdocs gh-deploy --force --clean --verbose
     - name: Build package
-      run: python -m build
+      run: |
+        python -m pip install --upgrade build twine
+        python -m build
     - name: Publish package to PyPI
       uses: pypa/gh-action-pypi-publish@release/v1
       with:
