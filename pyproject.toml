@@ -46,6 +46,9 @@ Documentation = "https://github.com/tombreit/mkdocs-pagetree-plugin/blob/main/RE
 Repository = "https://github.com/tombreit/mkdocs-pagetree-plugin"
 Issues = "https://github.com/tombreit/mkdocs-pagetree-plugin/issues"
 
+[tool.setuptools]
+license-files = ["LICENSES/*.txt"]
+
 [tool.setuptools_scm]
 
 [tool.setuptools.packages.find]
