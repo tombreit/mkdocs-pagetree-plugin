@@ -52,7 +52,8 @@ license-files = ["LICENSES/*.txt"]
 [tool.setuptools_scm]
 
 [tool.setuptools.packages.find]
-where = ["mkdocs_pagetree_plugin"]
+# Use setuptools autodiscover
+# where = ["mkdocs_pagetree_plugin"]
 
 [tool.ruff]
 src = ["mkdocs_pagetree_plugin"]
