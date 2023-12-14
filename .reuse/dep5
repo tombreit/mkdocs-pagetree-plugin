@@ -1,0 +1,8 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: mkdocs-pagetree-plugin
+Upstream-Contact: Thomas Breitner <mail@thms.de>
+Source: https://github.com/tombreit/mkdocs-pagetree-plugin
+
+Files: docs/*
+Copyright: 2023 Thomas Breitner <mail@thms.de>
+License: CC0-1.0

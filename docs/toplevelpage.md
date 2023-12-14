@@ -1,7 +1,6 @@
-<!--
-SPDX-FileCopyrightText: 2023 Thomas Breitner
+---
+status: new
+---
 
-SPDX-License-Identifier: CC0-1.0
--->
 
 # Another top level page
