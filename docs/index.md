@@ -6,6 +6,11 @@ MkDocs plugin that allows you to display the page tree. Like `sitemap.xml`, but 
 - [Issues](https://github.com/tombreit/mkdocs-pagetree-plugin/issues)
 - [PyPI package](https://pypi.org/project/mkdocs-pagetree-plugin/)
 
+## Notes
+
+- Only the first occurrence of the marker <code>&#123;&#123; pagetree &#125;&#125;</code> on a page is replaced.
+- The plugin or marker can be used on several pages.
+
 ## Pagetree demo
 
 ### Code
