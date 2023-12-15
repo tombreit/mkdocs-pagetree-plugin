@@ -6,6 +6,7 @@ SPDX-License-Identifier: MIT
 
 {%- if pagetree|length>1 %}
 <div class="pagetree-container">
+    <div class="pagetree-functions"></div>
     <ul class="pagetree">
     {%- for nav_item in pagetree %}
     {%- if nav_item.children %}

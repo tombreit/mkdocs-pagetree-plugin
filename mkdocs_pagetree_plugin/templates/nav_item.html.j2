@@ -4,9 +4,17 @@ SPDX-FileCopyrightText: 2023 Thomas Breitner
 SPDX-License-Identifier: MIT
 #}
 
-<a class="md-nav__link" href="{{ nav_item.url|url }}">
+{% set page_status -%}
+    {%- if nav_item.is_page and nav_item.meta.status -%}
+        {{ nav_item.meta.status }}
+    {%- endif -%}
+{%- endset %}
+
+<a
+    class="md-nav__link pagetree-navlink {% if page_status %} pagetree-pagestatus {% endif %}"
+    data-page-status="{% if page_status %}{{ page_status }}{% endif%}"
+    href="{{ nav_item.url|url }}
+">
     {{ nav_item.title }}
-    {% if nav_item.is_page and nav_item.meta.status %}
-        <strong>{{ nav_item.meta.status }}</strong>
-    {% endif %}
+    {% if page_status %}<strong title="Status: {{ page_status }}">{{ page_status }}</strong>{% endif %}
 </a>
