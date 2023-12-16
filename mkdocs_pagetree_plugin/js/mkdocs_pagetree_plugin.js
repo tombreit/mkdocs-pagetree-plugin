@@ -118,18 +118,22 @@ function insertPageStatusFilter (pagetreeContainerElement, pagetreeElement, page
   for (const pageStatus of pagesWithPagestatus) {
     pageStatuses.add(pageStatus.dataset.pageStatus)
   };
-  // ...and convert the set back to an array
-  pageStatuses = Array.from(pageStatuses)
 
-  const pagestatusSelect = getPagestatusSelect(pageStatuses)
-  pagetreeFunctionsElement.insertAdjacentHTML('beforeend', pagestatusSelect)
+  if (pageStatuses.size) {
+    // Only render/expose the filter function if any page status exists
+    // ...and convert the set back to an array
+    pageStatuses = Array.from(pageStatuses)
 
-  const pageStatusSelectElement = document.getElementById('pagestatus-select')
-  pageStatusSelectElement.addEventListener('click', (e) => {
-  })
-  pageStatusSelectElement.addEventListener('change', (event) => {
-    filterTree(pagetreeElement, event.target.value)
-  })
+    const pagestatusSelect = getPagestatusSelect(pageStatuses)
+    pagetreeFunctionsElement.insertAdjacentHTML('beforeend', pagestatusSelect)
+
+    const pageStatusSelectElement = document.getElementById('pagestatus-select')
+    pageStatusSelectElement.addEventListener('click', (e) => {
+    })
+    pageStatusSelectElement.addEventListener('change', (event) => {
+      filterTree(pagetreeElement, event.target.value)
+    })
+  }
 }
 
 function filterTree (pagetreeElement, pagestatus) {
