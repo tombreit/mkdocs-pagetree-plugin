@@ -15,7 +15,7 @@ name = "mkdocs-pagetree-plugin"
 dynamic = ["version"]
 description = "MkDocs plugin that allows you to display the page tree"
 authors = [{name = "Thomas Breitner", email = "mail@thms.de"},]
-license = {text = "MIT"}
+license = {file = "LICENSES/MIT.txt"}
 readme = "README.md"
 requires-python = ">=3.9"
 classifiers = [
