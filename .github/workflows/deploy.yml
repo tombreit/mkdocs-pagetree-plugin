@@ -13,6 +13,10 @@ permissions:
   pages: write
 
 jobs:
+
+  ghpages:
+    uses: ./.github/workflows/ghpages.yml
+
   deploy:
 
     runs-on: ubuntu-latest
@@ -28,14 +32,6 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip setuptools wheel
-    - name: Trigger a test build
-      run: |
-        python -m pip install .
-        mkdocs build --clean --verbose
-    - name: Deploy to github pages
-      run: |
-        python -m pip install .
-        mkdocs gh-deploy --force --clean --verbose
     - name: Build package
       run: |
         python -m pip install --upgrade build twine
