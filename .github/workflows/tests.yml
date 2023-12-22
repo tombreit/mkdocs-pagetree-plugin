@@ -37,8 +37,6 @@ jobs:
         run: reuse lint
       - name: Run ruff
         uses: chartboost/ruff-action@v1
-        with:
-          src: "./mkdocs_git_latest_changes_plugin"
 
   ghpages:
     uses: ./.github/workflows/ghpages.yml
