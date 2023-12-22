@@ -52,10 +52,6 @@ license-files = ["LICENSES/*.txt"]
 
 [tool.setuptools_scm]
 
-[tool.setuptools.packages.find]
-# Use setuptools autodiscover
-# where = ["mkdocs_pagetree_plugin"]
-
 [tool.ruff]
-src = ["src/mkdocs_pagetree_plugin"]
+src = ["src", "tests"]
 target-version = "py311"
