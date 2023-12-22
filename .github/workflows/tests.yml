@@ -11,6 +11,10 @@ on:
   pull_request:
   workflow_call:
 
+permissions:
+  contents: write
+  pages: write
+
 jobs:
 
   tests:
