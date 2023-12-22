@@ -35,6 +35,7 @@ dev = [
     "pre-commit",
     "reuse",
     "ruff",
+    "pytest",
 ]
 
 [project.entry-points."mkdocs.plugins"]
@@ -56,5 +57,5 @@ license-files = ["LICENSES/*.txt"]
 # where = ["mkdocs_pagetree_plugin"]
 
 [tool.ruff]
-src = ["mkdocs_pagetree_plugin"]
+src = ["src/mkdocs_pagetree_plugin"]
 target-version = "py311"
