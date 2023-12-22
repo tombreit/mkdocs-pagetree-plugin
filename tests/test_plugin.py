@@ -5,15 +5,14 @@
 import re
 import subprocess
 from pathlib import Path
-import pytest
 from distutils.dir_util import copy_tree
+import pytest
 
 
 @pytest.fixture
 def mkdocs_build(tmp_path: Path):
     """Fixture that builds MkDocs based on the top level plugin docs"""
     fixture_dir: str = str(Path(__file__).parent.parent)
-    mkdocs_config_filename = "mkdocs.yml"
     temp_dir: str = str(tmp_path)
     copy_tree(fixture_dir, temp_dir)
     return subprocess.check_call(
@@ -22,14 +21,19 @@ def mkdocs_build(tmp_path: Path):
             "build",
             "--strict",
             "--config-file",
-            Path(temp_dir) / mkdocs_config_filename,
+            Path(temp_dir) / "mkdocs.yml",
         ],
     )
 
 
 def test_build(mkdocs_build: int, tmp_path: Path) -> None:
-    index_file = tmp_path / "site" / "index.html"
-    assert index_file.exists(), "%s does not exist" % index_file
+    index_file_html = tmp_path / "site" / "index.html"
+    index_file_md = tmp_path / "docs" / "index.md"
 
-    contents = index_file.read_text()
-    assert re.search('<div class="pagetree-container">', contents)
+    contents_md = index_file_md.read_text()
+    assert re.search("{{ pagetree }}", contents_md)
+
+    assert index_file_html.exists(), "%s does not exist" % index_file_html
+    contents_html = index_file_html.read_text()
+    assert re.search('<div class="pagetree-container">', contents_html)
+    assert not re.search("{{ pagetree }}", contents_html)
