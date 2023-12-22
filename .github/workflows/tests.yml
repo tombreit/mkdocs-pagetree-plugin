@@ -1,0 +1,40 @@
+# SPDX-FileCopyrightText: 2023 Thomas Breitner
+#
+# SPDX-License-Identifier: CC0-1.0
+
+name: Run some tests and update github pages
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_call:
+
+jobs:
+
+  tests:
+    name: Run some tests, checks, formatters
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+      - name: Install dev dependencies
+        run: |
+          python -m pip install --upgrade pip setuptools wheel
+          python -m pip install -e .[dev]
+      - name: Run pytest
+        run: pytest
+      - name: Test REUSE compliance
+        run: reuse lint
+      - name: Run ruff
+        uses: chartboost/ruff-action@v1
+        with:
+          src: "./mkdocs_git_latest_changes_plugin"
+
+  ghpages:
+    uses: ./.github/workflows/ghpages.yml

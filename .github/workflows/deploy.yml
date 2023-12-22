@@ -8,17 +8,12 @@ on:
   release:
     types: [published]
 
-permissions:
-  contents: write
-  pages: write
-
 jobs:
 
-  ghpages:
-    uses: ./.github/workflows/ghpages.yml
+  test:
+    uses: ./.github/workflows/tests.yml
 
   deploy:
-
     runs-on: ubuntu-latest
 
     steps:

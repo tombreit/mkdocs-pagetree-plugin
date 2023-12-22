@@ -5,9 +5,9 @@
 name: Publish github pages
 
 on:
-  push:
-    branches:
-      - main
+  # push:
+  #   branches:
+  #     - main
   pull_request:
   workflow_call:
 
