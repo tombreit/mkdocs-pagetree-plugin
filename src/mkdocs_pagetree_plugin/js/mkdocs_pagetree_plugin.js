@@ -157,6 +157,10 @@ function filterTree (pagetreeElement, pagestatus) {
 
 document.addEventListener('DOMContentLoaded', function (event) {
   const pagetreeContainerElement = document.querySelector('.pagetree-container')
+
+  // Return early if target element not found
+  if (!pagetreeContainerElement) return;
+
   const pagetreeFunctionsElement = pagetreeContainerElement.querySelector('.pagetree-functions')
   const pagetreeElement = pagetreeContainerElement.querySelector('.pagetree')
 
