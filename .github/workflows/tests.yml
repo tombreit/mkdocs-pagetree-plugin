@@ -13,7 +13,6 @@ on:
 
 permissions:
   contents: write
-  pages: write
 
 jobs:
 
