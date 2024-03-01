@@ -4,10 +4,8 @@
 
 __pycache__/
 *.py[cod]
-*.pyc
-
-.ruff-cache/
 *.egg-info/
+.ruff-cache/
 
 /build/
 /site/
