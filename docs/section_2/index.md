@@ -1,5 +1,13 @@
 ---
-status: deprecated
+status: new
 ---
 
-# Section 2
+# Pagetree with sibling pages only
+
+## Code
+
+<pre><code>&#123;&#123; pagetree(siblings) &#125;&#125;</code></pre>
+
+## Rendered
+
+{{ pagetree(siblings) }}
