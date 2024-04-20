@@ -25,6 +25,7 @@ SUPPORTED_TREE_OPTIONS = (
     "all",
     "children",
     "siblings",
+    "subtree",
 )
 
 
@@ -57,7 +58,10 @@ class PagetreePlugin(BasePlugin):
                 f"Found pagetree marker '{match.group()}' in '{page.file.src_uri}'"
             )
 
-            if page.parent and tree_option == "children":
+            if page.parent and tree_option == "subtree":
+                # Sibling pages, child pages and the current page
+                pagetree = page.parent.children
+            elif page.parent and tree_option == "children":
                 # Remove sibling pages of the current page, we are only
                 # interessted in sub[sections|pages].
                 pagetree = [i for i in page.parent.children if not isinstance(i, Page)]

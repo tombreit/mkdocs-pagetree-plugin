@@ -16,6 +16,7 @@ MkDocs plugin that allows you to display the page tree. Like `sitemap.xml`, but 
     - <code>&#123;&#123; pagetree(all) &#125;&#125;</code>: Render the whole pagetree. This is the default tree option, the `(all)` parameter can also be omitted.
     - <code>&#123;&#123; pagetree(children) &#125;&#125;</code>: Render only direct children of the current page
     - <code>&#123;&#123; pagetree(siblings) &#125;&#125;</code>: Render only direct siblings of the current page
+    - <code>&#123;&#123; pagetree(subtree) &#125;&#125;</code>: Render the subtree which contains the current page
 
 ## Pagetree demo
 
