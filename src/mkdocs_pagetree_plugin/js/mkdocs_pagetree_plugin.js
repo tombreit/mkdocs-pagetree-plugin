@@ -80,6 +80,11 @@ function toggleDetails (pagetree, state) {
 * Insert Collapse/expand button
 */
 function insertCollapseExpandButton (pagetreeContainerElement, pagetreeElement, pagetreeFunctionsElement) {
+
+  // Return early if there are no toggleable elements
+  const hasToggleElems = pagetreeElement.querySelector("details");
+  if (!hasToggleElems) return;
+
   const toggleBtn = '<button class="pagetree-toggle md-button btn btn-primary btn-sm my-2" type="button">Expand/Collapse</button>'
 
   pagetreeFunctionsElement.insertAdjacentHTML('afterbegin', toggleBtn)
