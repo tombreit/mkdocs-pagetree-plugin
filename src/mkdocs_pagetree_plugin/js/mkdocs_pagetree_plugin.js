@@ -12,6 +12,8 @@ function insertCSS () {
   .pagetree details {
     margin: 0;
     padding: 0;
+    border: none;
+    background-color: transparent;
   }
   /* Reset some Material for MkDocs styles */
   .md-typeset .pagetree details {
