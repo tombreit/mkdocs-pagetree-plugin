@@ -36,6 +36,7 @@ dev = [
     "reuse",
     "ruff",
     "pytest",
+    "beautifulsoup4",
 ]
 
 [project.entry-points."mkdocs.plugins"]
