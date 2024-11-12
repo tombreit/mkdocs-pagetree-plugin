@@ -69,7 +69,9 @@ class PagetreePlugin(BasePlugin):
                 # Remove sibling subsections of the current page, we are only
                 # interessted in direct sibling pages.
                 pagetree = [
-                    i for i in page.parent.children if not isinstance(i, Section)
+                    i
+                    for i in page.parent.children
+                    if not any([isinstance(i, Section), i == page])
                 ]
             else:
                 # Without tree_option or without a parent page
