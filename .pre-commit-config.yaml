@@ -15,11 +15,11 @@ repos:
         types: [python]
         # always_run: true
   - repo: https://github.com/fsfe/reuse-tool
-    rev: v2.1.0
+    rev: v4.0.3
     hooks:
       - id: reuse
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.1.6
+    rev: v0.7.3
     hooks:
       - id: ruff
       - id: ruff-format
