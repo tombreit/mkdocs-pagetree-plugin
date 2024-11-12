@@ -2,4 +2,4 @@
 status: deprecated
 ---
 
-# Some page
+# Deprecated page
