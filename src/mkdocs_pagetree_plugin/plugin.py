@@ -97,6 +97,7 @@ class PagetreePlugin(BasePlugin):
         config["extra_javascript"] = ["js/mkdocs_pagetree_plugin.js"] + config[
             "extra_javascript"
         ]
+        config["extra_css"] = ["css/mkdocs_pagetree_plugin.css"] + config["extra_css"]
         return config
 
     def on_post_build(self, config):
@@ -106,8 +107,13 @@ class PagetreePlugin(BasePlugin):
         # Using this weird js filename to avoid a clash with js files
         # named identically from other plugins/themes.
         module_name = "mkdocs_pagetree_plugin"
-        file = f"js/{module_name}.js"
-        current_dir = Path(__file__).parent
-        src_file_path = current_dir / file
-        dest_file_path = Path(config["site_dir"], file)
-        copy_file(src_file_path, dest_file_path)
+        files = [
+            f"js/{module_name}.js",
+            f"css/{module_name}.css",
+        ]
+
+        for f in files:
+            current_dir = Path(__file__).parent
+            src_file_path = current_dir / f
+            dest_file_path = Path(config["site_dir"], f)
+            copy_file(src_file_path, dest_file_path)
