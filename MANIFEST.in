@@ -4,3 +4,4 @@
 
 include src/mkdocs_pagetree_plugin/js/*.js
 include src/mkdocs_pagetree_plugin/templates/*.j2
+include src/mkdocs_pagetree_plugin/css/*.css

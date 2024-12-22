@@ -3,67 +3,6 @@
 // SPDX-License-Identifier: MIT
 
 /**
-* Insert pagetree plugin CSS
-*/
-function insertCSS () {
-  const style = document.createElement('style')
-  style.appendChild(document.createTextNode(`
-  /* Reset some default MkDocs styles */
-  .pagetree details {
-    margin: 0;
-    padding: 0;
-    border: none;
-    background-color: transparent;
-  }
-  /* Reset some Material for MkDocs styles */
-  .md-typeset .pagetree details {
-    background-color: transparent;
-    border: none;
-    box-shadow: none;
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-  .md-typeset .pagetree summary {
-    padding-left: 3em;
-    padding-top: 0;
-    padding-bottom: 0;
-    background-color: transparent;
-  }
-  .md-typeset .pagetree summary::after {
-    display: none;
-  }
-  .md-typeset .pagetree summary::before {
-    background-color: currentcolor;
-    content: "";
-    height: 1rem;
-    -webkit-mask-image: var(--md-details-icon);
-    mask-image: var(--md-details-icon);
-    -webkit-mask-position: center;
-    mask-position: center;
-    -webkit-mask-repeat: no-repeat;
-    mask-repeat: no-repeat;
-    -webkit-mask-size: contain;
-    mask-size: contain;
-    position: absolute;
-    top: .1em;
-    left: 1.3em;
-    transform: rotate(0deg);
-    transition: transform .25s;
-    width: 1rem;
-  }
-  .md-typeset .pagetree details[open] > summary::before {
-    transform: rotate(90deg);
-  }
-  .md-typeset .pagetree-container ul li {
-    margin-bottom: 0;
-  }
-  `))
-
-  const head = document.getElementsByTagName('head')[0]
-  head.appendChild(style)
-}
-
-/**
 * Collapse/expand all pagetree <details> sections
 */
 function toggleDetails (pagetree, state) {
@@ -167,11 +106,13 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
   // Return early if target element not found
   if (!pagetreeContainerElement) return;
+// SPDX-FileCopyrightText: 2023 Thomas Breitner
+//
+// SPDX-License-Identifier: MIT
 
   const pagetreeFunctionsElement = pagetreeContainerElement.querySelector('.pagetree-functions')
   const pagetreeElement = pagetreeContainerElement.querySelector('.pagetree')
 
-  insertCSS()
   insertCollapseExpandButton(pagetreeContainerElement, pagetreeElement, pagetreeFunctionsElement)
   insertPageStatusFilter(pagetreeContainerElement, pagetreeElement, pagetreeFunctionsElement)
 })
