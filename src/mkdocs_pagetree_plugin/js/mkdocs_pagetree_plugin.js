@@ -106,6 +106,9 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
   // Return early if target element not found
   if (!pagetreeContainerElement) return;
+// SPDX-FileCopyrightText: 2023 Thomas Breitner
+//
+// SPDX-License-Identifier: MIT
 
   const pagetreeFunctionsElement = pagetreeContainerElement.querySelector('.pagetree-functions')
   const pagetreeElement = pagetreeContainerElement.querySelector('.pagetree')

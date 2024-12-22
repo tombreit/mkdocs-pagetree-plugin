@@ -28,6 +28,11 @@ SUPPORTED_TREE_OPTIONS = (
     "subtree",
 )
 
+ASSETS = [
+    "js/mkdocs_pagetree_plugin.js",
+    "css/mkdocs_pagetree_plugin.css",
+]
+
 
 class PagetreePlugin(BasePlugin):
     def __init__(self):
@@ -94,26 +99,19 @@ class PagetreePlugin(BasePlugin):
         return self._replace_marker_with_pagetree(output, page, config)
 
     def on_config(self, config):
-        config["extra_javascript"] = ["js/mkdocs_pagetree_plugin.js"] + config[
-            "extra_javascript"
-        ]
-        config["extra_css"] = ["css/mkdocs_pagetree_plugin.css"] + config["extra_css"]
+        # Insert our assets to the corresponding config keys
+        for asset in ASSETS:
+            if asset.endswith(".js"):
+                config["extra_javascript"] = [asset] + config["extra_javascript"]
+            elif asset.endswith(".css"):
+                config["extra_css"] = [asset] + config["extra_css"]
+
         return config
 
     def on_post_build(self, config):
-        """
-        Copy our javascript file
-        """
-        # Using this weird js filename to avoid a clash with js files
-        # named identically from other plugins/themes.
-        module_name = "mkdocs_pagetree_plugin"
-        files = [
-            f"js/{module_name}.js",
-            f"css/{module_name}.css",
-        ]
-
-        for f in files:
-            current_dir = Path(__file__).parent
-            src_file_path = current_dir / f
-            dest_file_path = Path(config["site_dir"], f)
+        # Copy assets to the site directory
+        current_dir = Path(__file__).parent
+        for asset in ASSETS:
+            src_file_path = current_dir / asset
+            dest_file_path = Path(config["site_dir"], asset)
             copy_file(src_file_path, dest_file_path)
