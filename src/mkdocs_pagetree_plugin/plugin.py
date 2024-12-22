@@ -29,8 +29,8 @@ SUPPORTED_TREE_OPTIONS = (
 )
 
 ASSETS = [
-    "js/mkdocs_pagetree_plugin.js",
-    "css/mkdocs_pagetree_plugin.css",
+    "assets/mkdocs_pagetree_plugin.js",
+    "assets/mkdocs_pagetree_plugin.css",
 ]
 
 

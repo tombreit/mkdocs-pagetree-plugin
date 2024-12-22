@@ -2,6 +2,14 @@
 #
 # SPDX-License-Identifier: CC0-1.0
 
-include src/mkdocs_pagetree_plugin/js/*.js
-include src/mkdocs_pagetree_plugin/templates/*.j2
-include src/mkdocs_pagetree_plugin/css/*.css
+graf src/mkdocs_pagetree_plugin/templates
+graft src/mkdocs_pagetree_plugin/assets
+
+prune docs/
+prune .github/
+
+exclude \
+    .gitignore \
+    .pre-commit-config.yaml \
+    REUSE.toml \
+    mkdocs.yml
