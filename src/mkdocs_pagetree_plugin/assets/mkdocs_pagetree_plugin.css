@@ -53,3 +53,18 @@
 .md-typeset .pagetree-container ul li {
   margin-bottom: 0;
 }
+[dir="ltr"] .md-typeset .pagetree-parent {
+  margin-left: 0.625em;
+}
+.md-typeset .pagetree-navlink {
+  display: inline;
+}
+
+/* Custom styles for Pagetree */
+.pagetree {
+  list-style-position: inside;
+}
+
+.pagetree-parent {
+  list-style-type: none;
+}
