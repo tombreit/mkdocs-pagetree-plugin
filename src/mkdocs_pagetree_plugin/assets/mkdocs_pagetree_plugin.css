@@ -26,6 +26,10 @@
   margin-bottom: 0;
   font-size: inherit;
 }
+.md-typeset .pagetree details > :last-child {
+  margin-top: 0;
+  margin-bottom: 0;
+}
 .md-typeset .pagetree summary {
   padding-left: 1.3em;
   padding-top: 0;
