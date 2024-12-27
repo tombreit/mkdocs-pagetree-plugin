@@ -75,17 +75,3 @@
 .pagetree-parent {
   list-style-type: none;
 }
-
-@supports (hanging-punctuation: first) and (font: -apple-system-body) and
-  (-webkit-appearance: none) {
-  /* Safari workaround for summary list-style-position: outside */
-  summary::-webkit-details-marker {
-    display: none;
-  }
-  .pagetree-parent {
-    list-style-type: "▶ ";
-  }
-  .pagetree-parent:has(> details[open]) {
-    list-style-type: "▼ ";
-  }
-}
