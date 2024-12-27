@@ -11,6 +11,18 @@
   border: none;
   background-color: transparent;
 }
+.pagetree summary {
+  list-style-position: outside;
+}
+.pagetree ul {
+  list-style-type: disc;
+}
+.pagetree li:has(> details),
+.rst-content .section .pagetree li:has(> details)  /* Fix for MkDocs ReadTheDocs theme */
+{
+  /* if <li> is nested node */
+  list-style-type: none;
+}
 /* Reset some Material for MkDocs styles */
 .md-typeset .pagetree details {
   background-color: transparent;
@@ -18,9 +30,14 @@
   box-shadow: none;
   margin-top: 0;
   margin-bottom: 0;
+  font-size: inherit;
+}
+.md-typeset .pagetree details > :last-child {
+  margin-top: 0;
+  margin-bottom: 0;
 }
 .md-typeset .pagetree summary {
-  padding-left: 3em;
+  padding-left: 1.3em;
   padding-top: 0;
   padding-bottom: 0;
   background-color: transparent;
@@ -42,7 +59,7 @@
   mask-size: contain;
   position: absolute;
   top: 0.1em;
-  left: 1.3em;
+  left: 0.1em;
   transform: rotate(0deg);
   transition: transform 0.25s;
   width: 1rem;
@@ -52,4 +69,10 @@
 }
 .md-typeset .pagetree-container ul li {
   margin-bottom: 0;
+}
+[dir="ltr"] .md-typeset .pagetree li:has(> details) {
+  margin-left: 0.625em;
+}
+.md-typeset .pagetree-navlink {
+  display: inline;
 }
