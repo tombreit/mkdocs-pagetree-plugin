@@ -17,6 +17,10 @@
 .pagetree ul {
   list-style-type: disc;
 }
+.pagetree li:has(> details) {
+  /* if <li> is nested node */
+  list-style-type: none;
+}
 /* Reset some Material for MkDocs styles */
 .md-typeset .pagetree details {
   background-color: transparent;
@@ -64,14 +68,9 @@
 .md-typeset .pagetree-container ul li {
   margin-bottom: 0;
 }
-[dir="ltr"] .md-typeset .pagetree-parent {
+[dir="ltr"] .md-typeset .pagetree li:has(> details) {
   margin-left: 0.625em;
 }
 .md-typeset .pagetree-navlink {
   display: inline;
-}
-
-/* Custom styles for Pagetree */
-.pagetree-parent {
-  list-style-type: none;
 }
