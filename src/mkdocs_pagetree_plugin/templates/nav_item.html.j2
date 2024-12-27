@@ -11,7 +11,7 @@ SPDX-License-Identifier: MIT
 {%- endset %}
 
 <a
-    class="md-nav__link pagetree-navlink {% if page_status %} pagetree-pagestatus {% endif %}"
+    class="pagetree-navlink {% if page_status %} pagetree-pagestatus {% endif %}"
     data-page-status="{% if page_status %}{{ page_status }}{% endif%}"
     href="{{- nav_item.url|url -}}"
 >
