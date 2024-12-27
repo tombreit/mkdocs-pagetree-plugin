@@ -17,7 +17,9 @@
 .pagetree ul {
   list-style-type: disc;
 }
-.pagetree li:has(> details) {
+.pagetree li:has(> details),
+.rst-content .section .pagetree li:has(> details)  /* Fix for MkDocs ReadTheDocs theme */
+{
   /* if <li> is nested node */
   list-style-type: none;
 }
