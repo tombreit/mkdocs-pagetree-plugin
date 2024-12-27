@@ -4,6 +4,5 @@
 
 site_name: mkdocs-pagetree-plugin
 site_url: https://tombreit.github.io/mkdocs-pagetree-plugin
-repo_url: https://github.com/tombreit/mkdocs-pagetree-plugin
 plugins:
   - pagetree
