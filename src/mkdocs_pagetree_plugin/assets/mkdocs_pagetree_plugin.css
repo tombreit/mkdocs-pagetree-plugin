@@ -4,75 +4,60 @@
  * SPDX-License-Identifier: MIT
  */
 
-/* Reset some default MkDocs styles */
-.pagetree details {
-  margin: 0;
-  padding: 0;
-  border: none;
-  background-color: transparent;
+.pagetree,
+.pagetree * {
+  padding: revert !important;
+  margin: revert !important;
+  border: revert !important;
+  background: revert !important;
+  box-shadow: revert !important;
+  font-size: unset !important;
 }
-.pagetree summary {
-  list-style-position: outside;
-}
+
 .pagetree ul {
-  list-style-type: disc;
+  padding: 0 0 0 0.9em !important;
 }
-.pagetree li:has(> details),
-.rst-content .section .pagetree li:has(> details)  /* Fix for MkDocs ReadTheDocs theme */
-{
-  /* if <li> is nested node */
-  list-style-type: none;
+
+.pagetree li {
+  list-style-type: disc !important;
 }
-/* Reset some Material for MkDocs styles */
-.md-typeset .pagetree details {
-  background-color: transparent;
-  border: none;
-  box-shadow: none;
-  margin-top: 0;
-  margin-bottom: 0;
-  font-size: inherit;
+
+.pagetree li:has(> details){
+  list-style-type: none !important;
 }
-.md-typeset .pagetree details > :last-child {
-  margin-top: 0;
-  margin-bottom: 0;
+
+.pagetree summary {
+  list-style: none !important;
+  cursor: pointer !important;
+  position: relative !important;
+  left: -0.9em !important;
 }
-.md-typeset .pagetree summary {
-  padding-left: 1.3em;
-  padding-top: 0;
-  padding-bottom: 0;
-  background-color: transparent;
+
+.pagetree summary::before {
+  content: '';
+  position: relative;
+  top: 0.2em;
+  display: inline-block;
+  width: 0.6em;
+  height: 1em;
+  margin: 0 0.25em 0 0;
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIgdmlld0JveD0iLTIgMCAxMCAxMCI+PHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIyIiBkPSJtMSA5IDQtNC00LTQiLz48L3N2Zz4=');
+  background-size: contain;
+  background-position: left center;
+  background-repeat: no-repeat;
+  transition: transform 0.2s;
+
+  /* Reset some MkDocs Material theme styles */
+  left: 0 !important;
+  mask-image: none !important;
+  background-color: transparent !important;
 }
-.md-typeset .pagetree summary::after {
-  display: none;
+
+.pagetree summary::after {
+  /* Reset some MkDocs Material theme styles */
+  display: none !important;
 }
-.md-typeset .pagetree summary::before {
-  background-color: currentcolor;
-  content: "";
-  height: 1rem;
-  -webkit-mask-image: var(--md-details-icon);
-  mask-image: var(--md-details-icon);
-  -webkit-mask-position: center;
-  mask-position: center;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-  position: absolute;
-  top: 0.1em;
-  left: 0.1em;
-  transform: rotate(0deg);
-  transition: transform 0.25s;
-  width: 1rem;
-}
-.md-typeset .pagetree details[open] > summary::before {
+
+.pagetree details[open] > summary::before {
   transform: rotate(90deg);
-}
-.md-typeset .pagetree-container ul li {
-  margin-bottom: 0;
-}
-[dir="ltr"] .md-typeset .pagetree li:has(> details) {
-  margin-left: 0.625em;
-}
-.md-typeset .pagetree-navlink {
-  display: inline;
 }
