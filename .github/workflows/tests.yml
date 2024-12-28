@@ -38,5 +38,5 @@ jobs:
         uses: chartboost/ruff-action@v1
 
   ghpages:
-    if: github.event_name == 'release'
+    if: github.event_name == 'release' || (github.event_name == 'push' && github.ref == 'refs/heads/main')
     uses: ./.github/workflows/ghpages.yml
