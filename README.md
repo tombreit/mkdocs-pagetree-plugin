@@ -36,7 +36,7 @@ plugins:
 
 Use `{{ pagetree }}` in your Markdown page(s) where the page tree should be rendered.
 
-The `{{ pagetree }}` could be limited to only render `children`, `siblings` or `subtree` pages ([docs](https://tombreit.github.io/mkdocs-pagetree-plugin/#notes)).
+The `{{ pagetree }}` could be limited to only render `children`, `siblings` or `subtree` pages ([docs](https://tombreit.github.io/mkdocs-pagetree-plugin/#options)).
 
 ## Development
 
