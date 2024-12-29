@@ -4,6 +4,13 @@
  * SPDX-License-Identifier: MIT
  */
 
+.pagetree {
+  --caret-indent: 0.9em;
+  --list-item-margin-vertical: 0.25em;
+}
+
+/* Forcefully reset some styles to support MkDocs builtin themes
+   (mkdocs, readthedocs) and third party themes (Material) */
 .pagetree,
 .pagetree * {
   padding: revert !important;
@@ -15,11 +22,12 @@
 }
 
 .pagetree ul {
-  padding: 0 0 0 0.9em !important;
+  padding: 0 0 0 var(--caret-indent) !important;
 }
 
 .pagetree li {
   list-style-type: disc !important;
+  margin: var(--list-item-margin-vertical) 0 !important;
 }
 
 .pagetree li:has(> details){
@@ -30,7 +38,7 @@
   list-style: none !important;
   cursor: pointer !important;
   position: relative !important;
-  left: -0.9em !important;
+  left: -(var(--caret-indent)) !important;
 }
 
 .pagetree summary::before {
