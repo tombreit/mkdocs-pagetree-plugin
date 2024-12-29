@@ -53,6 +53,11 @@
   background-color: transparent !important;
 }
 
+/* Fix marker for WebKit browsers */
+.pagetree summary::-webkit-details-marker {
+  display: none;
+}
+
 .pagetree summary::after {
   /* Reset some MkDocs Material theme styles */
   display: none !important;
