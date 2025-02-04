@@ -55,7 +55,7 @@ class PagetreePlugin(BasePlugin):
             tree_option = match.group(2) if match.group(2) else "all"
 
             if tree_option not in SUPPORTED_TREE_OPTIONS:
-                msg = f"""Page '{page}': Got unsupported pagetree option '{tree_option}'. Supported options: {', '.join(f"'{opt}'" for opt in SUPPORTED_TREE_OPTIONS)}"""
+                msg = f"""Page '{page}': Got unsupported pagetree option '{tree_option}'. Supported options: {", ".join(f"'{opt}'" for opt in SUPPORTED_TREE_OPTIONS)}"""
                 log.warning(msg)
                 raise PluginError(msg)
 
@@ -99,6 +99,14 @@ class PagetreePlugin(BasePlugin):
         return self._replace_marker_with_pagetree(output, page, config)
 
     def on_config(self, config):
+        # Ensure that this method is called only once:
+        # Some MkDocs plugins seem (eg. mkdocs-static-i18n) to call the on_config
+        # method multiple times (eg. for every language) which would result
+        # in multiple asset insertions.
+        if getattr(self, "_on_config_called", False):
+            return config
+        self._on_config_called = True
+
         # Insert our assets to the corresponding config keys
         for asset in ASSETS:
             if asset.endswith(".js"):
