@@ -101,14 +101,11 @@ function filterTree (pagetreeElement, pagestatus) {
   toggleDetails(pagetreeElement, 'expand')
 }
 
-document.addEventListener('DOMContentLoaded', function (event) {
+document.addEventListener('DOMContentLoaded', function () {
   const pagetreeContainerElement = document.querySelector('.pagetree-container')
 
   // Return early if target element not found
   if (!pagetreeContainerElement) return;
-// SPDX-FileCopyrightText: 2023 Thomas Breitner
-//
-// SPDX-License-Identifier: MIT
 
   const pagetreeFunctionsElement = pagetreeContainerElement.querySelector('.pagetree-functions')
   const pagetreeElement = pagetreeContainerElement.querySelector('.pagetree')

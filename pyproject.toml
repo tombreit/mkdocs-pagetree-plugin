@@ -31,6 +31,10 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+i18n = [
+    "mkdocs-static-i18n",
+    "mkdocs-material",
+]
 dev = [
     "pre-commit",
     "reuse",

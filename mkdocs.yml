@@ -4,5 +4,17 @@
 
 site_name: mkdocs-pagetree-plugin
 site_url: https://tombreit.github.io/mkdocs-pagetree-plugin
+theme:
+  material
 plugins:
   - pagetree
+  - i18n:
+      docs_structure: suffix
+      languages:
+        - locale: en
+          name: English
+          build: true
+          default: true
+        - locale: de
+          name: Deutsch
+          build: true
