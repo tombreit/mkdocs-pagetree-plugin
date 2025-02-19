@@ -8,6 +8,8 @@ MkDocs Pagetree Plugin
 
 import re
 from pathlib import Path
+from copy import copy
+
 from jinja2 import PackageLoader
 
 from mkdocs.structure.pages import Page
@@ -66,18 +68,34 @@ class PagetreePlugin(BasePlugin):
             if page.parent and tree_option == "subtree":
                 # Sibling pages, child pages and the current page
                 pagetree = page.parent.children
+
             elif page.parent and tree_option == "children":
                 # Remove sibling pages of the current page, we are only
                 # interessted in sub[sections|pages].
-                pagetree = [i for i in page.parent.children if not isinstance(i, Page)]
-            elif page.parent and tree_option == "siblings":
-                # Remove sibling subsections of the current page, we are only
-                # interessted in direct sibling pages.
                 pagetree = [
-                    i
-                    for i in page.parent.children
-                    if not any([isinstance(i, Section), i == page])
+                    item for item in page.parent.children if not isinstance(item, Page)
                 ]
+
+            elif page.parent and tree_option == "siblings":
+                siblings = []
+                for item in page.parent.children:
+                    # Skip the current page
+                    if item == page:
+                        continue
+
+                    # We copy all items and prune the children of siblings
+                    item_copy = copy(item)
+                    if isinstance(item_copy, Section):
+                        # Keep only the index page of sections
+                        index_page = next(
+                            (p for p in item_copy.children if p.is_index), None
+                        )
+                        item_copy.children = [index_page] if index_page else []
+
+                    siblings.append(item_copy)
+
+                pagetree = siblings
+
             else:
                 # Without tree_option or without a parent page
                 # (eg. the homepage) the default 'all' pagetree will be rendered.

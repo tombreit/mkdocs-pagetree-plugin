@@ -43,5 +43,5 @@ The `{{ pagetree }}` could be limited to only render `children`, `siblings` or `
 ```bash
 git clone git@github.com:tombreit/mkdocs-pagetree-plugin.git
 cd mkdocs-pagetree-plugin
-pip install --editable .[dev]
+pip install --editable .[dev,themed]
 ```

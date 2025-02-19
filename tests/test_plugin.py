@@ -46,6 +46,21 @@ plugins:
     (subsection_dir / "subsectionpage1.md").write_text("# Subsection page 1\n")
     (subsection_dir / "subsectionpage2.md").write_text("# Subsection page 2\n")
 
+    # subprocess.run(["tree", project_dir], check=True)
+    # ├── docs
+    # │   ├── index.md
+    # │   ├── page1.md
+    # │   ├── page2.md
+    # │   └── section
+    # │       ├── index.md
+    # │       ├── subpage1.md
+    # │       ├── subpage2.md
+    # │       └── subsection
+    # │           ├── index.md
+    # │           ├── subsectionpage1.md
+    # │           └── subsectionpage2.md
+    # └── mkdocs.yml
+
     return project_dir
 
 
@@ -127,9 +142,6 @@ def test_pagetree_children(mkdocs_project: Path, build_mkdocs):
 
     build_mkdocs()  # Execute the build function
 
-    # Debug current directory layout:
-    # subprocess.run(["tree", mkdocs_project], check=True)
-
     target_html = mkdocs_project / "site" / "section" / "index.html"
     assert target_html.exists()
     content = target_html.read_text()
@@ -161,6 +173,7 @@ def test_pagetree_siblings(mkdocs_project: Path, build_mkdocs):
 
     assert "../" in links
     assert "../subpage2/" in links
+    assert "../subsection/" in links
     assert "../subpage1/" not in links
 
 
