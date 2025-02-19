@@ -7,4 +7,4 @@ site_url: https://tombreit.github.io/mkdocs-pagetree-plugin
 plugins:
   - pagetree
 theme:
-  name: material
+  name: readthedocs

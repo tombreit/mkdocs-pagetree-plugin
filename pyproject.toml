@@ -31,9 +31,6 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-themed = [
-    "mkdocs-material>=9",
-]
 dev = [
     "pre-commit",
     "reuse",
