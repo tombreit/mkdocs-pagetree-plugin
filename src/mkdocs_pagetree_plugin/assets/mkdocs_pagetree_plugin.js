@@ -45,7 +45,7 @@ function insertCollapseExpandButton (pagetreeContainerElement, pagetreeElement, 
 
 function getPagestatusSelect (pageStatusesArray) {
   const pagestatusSelectElem = `
-  <select name="pagestatus-select" id="pagestatus-select" class="md-button btn btn-primary btn-sm my-2">
+  <select name="pagestatus-select" id="pagestatus-select" class="pagestatus-select md-button btn btn-primary btn-sm my-2">
     <option value="">Filter by page status</option>
     ${pageStatusesArray.map(status => `
       <option value="${status}">Page status: ${status}</option>
