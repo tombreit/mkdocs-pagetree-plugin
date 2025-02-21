@@ -90,7 +90,10 @@ class PagetreePlugin(BasePlugin):
                         index_page = next(
                             (p for p in item_copy.children if p.is_index), None
                         )
-                        item_copy.children = [index_page] if index_page else []
+                        if index_page:
+                            item_copy = index_page
+                        else:
+                            item_copy.children = []
 
                     siblings.append(item_copy)
 
