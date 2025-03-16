@@ -2,7 +2,7 @@
 status: new
 ---
 
-# Pagetree with subtree
+# Pagetree subtree demo
 
 ## Code
 

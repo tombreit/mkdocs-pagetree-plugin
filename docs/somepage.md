@@ -1,5 +1,0 @@
----
-status: deprecated
----
-
-# Deprecated page

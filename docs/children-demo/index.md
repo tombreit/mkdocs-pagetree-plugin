@@ -2,7 +2,7 @@
 status: new
 ---
 
-# Pagetree with children
+# Pagetree children demo
 
 *Note: This rendering mode does not include direct sibling pages of the current page.*
 

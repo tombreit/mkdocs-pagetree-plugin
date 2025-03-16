@@ -2,7 +2,7 @@
 status: new
 ---
 
-# Pagetree with sibling pages only
+# Pagetree sibling demo
 
 *Note: This rendering mode ignores subsections without an [index page](https://www.mkdocs.org/user-guide/writing-your-docs/#index-pages).*
 
