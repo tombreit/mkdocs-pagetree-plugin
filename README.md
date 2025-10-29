@@ -38,6 +38,18 @@ Use `{{ pagetree }}` in your Markdown page(s) where the page tree should be rend
 
 The `{{ pagetree }}` could be limited to only render `children`, `siblings` or `subtree` pages ([docs](https://tombreit.github.io/mkdocs-pagetree-plugin/#options)).
 
+### Plugin Compatibility
+
+When using with [mkdocs-macros-plugin](https://mkdocs-macros-plugin.readthedocs.io/) or similar template-processing plugins, place `pagetree` **before** the other plugin in your `mkdocs.yml`:
+
+```yaml
+plugins:
+  - pagetree
+  - macros
+```
+
+See the [full documentation](https://tombreit.github.io/mkdocs-pagetree-plugin/#plugin-compatibility) for details.
+
 ## Development
 
 ```bash

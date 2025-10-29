@@ -198,3 +198,87 @@ def test_pagetree_subtree(mkdocs_project: Path, build_mkdocs):
     assert "subsection/subsectionpage1/" in links
     assert "subsection/subsectionpage1/" in links
     assert "../" not in links
+
+
+def test_plugin_compatibility_with_macros_lenient(tmp_path: Path):
+    """Test that pagetree works with mkdocs-macros-plugin in lenient mode."""
+    project_dir = tmp_path / "project"
+    project_dir.mkdir()
+    docs_dir = project_dir / "docs"
+    docs_dir.mkdir()
+
+    # Create mkdocs.yml with both plugins - pagetree first
+    mkdocs_yml = project_dir / "mkdocs.yml"
+    mkdocs_yml.write_text(
+        """
+site_name: Test Site
+plugins:
+  - pagetree
+  - macros
+"""
+    )
+
+    # Create a page with both pagetree marker and macros variable
+    (docs_dir / "index.md").write_text(
+        """# Home
+
+Site name: {{ config.site_name }}
+
+{{ pagetree }}
+"""
+    )
+
+    (docs_dir / "page1.md").write_text("# Page 1\n")
+
+    # Build the site
+    subprocess.run(
+        ["mkdocs", "build", "--strict", "--clean"],
+        cwd=project_dir,
+        check=True,
+    )
+
+    # Verify the output contains both the macros variable and pagetree
+    index_html = project_dir / "site" / "index.html"
+    assert index_html.exists()
+    content = index_html.read_text()
+
+    # Check that macros variable was processed
+    assert "Site name: Test Site" in content
+
+    # Check that pagetree was rendered
+    soup = BeautifulSoup(content, "html.parser")
+    pagetree = soup.find("ul", class_="pagetree")
+    assert pagetree is not None
+
+
+def test_plugin_order_matters_documentation(tmp_path: Path):
+    """Verify that the built documentation includes plugin compatibility information."""
+    fixture_dir: str = str(Path(__file__).parent.parent)
+    temp_dir: str = str(tmp_path)
+    shutil.copytree(fixture_dir, temp_dir, dirs_exist_ok=True)
+
+    subprocess.check_call(
+        [
+            "mkdocs",
+            "build",
+            "--strict",
+            "--config-file",
+            Path(temp_dir) / "mkdocs.yml",
+        ],
+    )
+
+    index_html = tmp_path / "site" / "index.html"
+    assert index_html.exists()
+    content = index_html.read_text()
+
+    # Verify that plugin compatibility documentation exists
+    assert "Plugin Compatibility" in content
+    assert "mkdocs-macros-plugin" in content
+    assert "plugin order" in content.lower()
+
+    # Check for the specific recommendations
+    soup = BeautifulSoup(content, "html.parser")
+    plugin_compat = soup.find("h2", id="plugin-compatibility")
+    assert plugin_compat is not None, (
+        "Plugin Compatibility section should exist in documentation"
+    )

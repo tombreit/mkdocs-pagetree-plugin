@@ -26,6 +26,58 @@ The following tree options for the pagetree marker exists:
 
     Render the subtree which contains the current page
 
+## Plugin Compatibility
+
+### Using with mkdocs-macros-plugin
+
+The `pagetree` plugin uses the <code>&#123;&#123; pagetree &#125;&#125;</code> syntax which resembles Jinja2 template variables. This can cause compatibility issues with plugins like [mkdocs-macros-plugin](https://mkdocs-macros-plugin.readthedocs.io/) that process Jinja2 templates.
+
+**Important:** The plugin order in your `mkdocs.yml` matters!
+
+#### Recommended Configuration
+
+Place `pagetree` **before** `macros` in your plugin list:
+
+```yaml
+plugins:
+  - pagetree
+  - macros
+```
+
+This ensures that the <code>&#123;&#123; pagetree &#125;&#125;</code> marker is processed by the pagetree plugin during the `on_post_page` event, after macros has already processed the page content during the `page_markdown` event.
+
+#### Why Order Matters
+
+- **mkdocs-macros-plugin** processes Jinja2 templates during the `page_markdown` event (before HTML rendering)
+- **mkdocs-pagetree-plugin** replaces the <code>&#123;&#123; pagetree &#125;&#125;</code> marker during the `on_post_page` event (after HTML rendering)
+
+If `macros` is listed first and configured with strict undefined handling, it will fail with an error like:
+
+```
+UndefinedError: 'pagetree' is undefined
+```
+
+This happens because `macros` tries to render <code>&#123;&#123; pagetree &#125;&#125;</code> as a Jinja2 variable that doesn't exist in its context.
+
+#### Alternative: Using Both Plugins
+
+If you need both plugins and prefer to have `macros` listed first, you can work around this by:
+
+1. Configuring macros to use lenient undefined handling (default behavior):
+
+```yaml
+plugins:
+  - macros:
+      on_undefined: lenient  # or omit this line for default behavior
+  - pagetree
+```
+
+2. Or by escaping the pagetree marker in your content:
+
+<pre><code>{% raw %}&#123;&#123; pagetree &#125;&#125;{% endraw %}</code></pre>
+
+However, the recommended approach is to simply place `pagetree` before `macros` in your plugin list.
+
 ## Notes
 
 - The plugin or marker can be used on several pages.
