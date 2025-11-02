@@ -53,6 +53,10 @@ The following tree options for the pagetree marker exists (see the [demo section
     .pagetree-functions { display: none; }
     ```
 
+- This plugin may not be compatible with the following MkDocs plugins:
+    - [mkdocs-macros-plugin](https://github.com/fralau/mkdocs-macros-plugin)
+    - [mkdocs-section-index](https://github.com/oprypin/mkdocs-section-index)
+
 ## Demo
 
 ### Code
