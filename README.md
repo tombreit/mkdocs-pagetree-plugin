@@ -45,3 +45,12 @@ git clone git@github.com:tombreit/mkdocs-pagetree-plugin.git
 cd mkdocs-pagetree-plugin
 pip install --editable .[dev]
 ```
+
+## Tests
+
+```bash
+git clone git@github.com:tombreit/mkdocs-pagetree-plugin.git
+cd mkdocs-pagetree-plugin
+pip install --editable .[dev]
+pytest
+```
